@@ -10,4 +10,3 @@ def do_moves(m, s, func):
 
 print(do_moves(moves, [l for l in stacks], lambda x : x[::-1]))
 print(do_moves(moves, [l for l in stacks], lambda x : x))
-
