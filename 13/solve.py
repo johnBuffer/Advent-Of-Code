@@ -3,9 +3,8 @@ data, tl = [eval(x) for l in open('data.txt').read().split('\n\n') for x in l.sp
 
 def comp(a, b):
     for x, y in zip(a, b):
-        if (type(x) == type(y) == int):
-            if x != y: return x < y
-        elif comp(tl(x), tl(y)) is not None: return comp(tl(x), tl(y))
+        if type(x) == type(y) == int and x != y: return x < y
+        elif x != y and comp(tl(x), tl(y)) is not None: return comp(tl(x), tl(y))
     if len(a) != len(b): return len(a) < len(b)
 
 print(sum(i+1 for i, (a, b) in enumerate(data[2*i:2*i+2] for i in range(len(data)//2)) if comp(a, b)))
