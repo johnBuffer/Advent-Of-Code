@@ -4,7 +4,9 @@ def disjoint(x, y):
     return y[1] < x[0] or x[1] < y[0]
 
 def fuse(x, y):
-    return (min(x[0], y[0]) if x[0] <= y[1] else x[0]), (max(x[1], y[1]) if y[0] <= x[1] else x[1])
+    a = min(x[0], y[0]) if x[0] <= y[1] else x[0]
+    b = max(x[1], y[1]) if y[0] <= x[1] else x[1]
+    return (a, b)
 
 def insert(inter, other):
     res = []
