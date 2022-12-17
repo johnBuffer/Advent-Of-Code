@@ -15,7 +15,7 @@ def distance(pos, end, explored, dist):
             best = t
     return best
 
-dists = {s: {e: distance(s, e, set(), 0) for e in graph if s != e} for s in graph}
+dists = {s: {e: distance(s, e, set(), 0) for e in graph if s != e and g[e] > 0} for s in graph if g[s] or s == 'AA'}
 
 def find_pressure(pos, remaining, time, acc = 0, pressure = 0):
     if not remaining:
