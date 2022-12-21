@@ -1,5 +1,5 @@
 data = set(tuple(int(x) for x in l.strip().split(',')) for l in open('data.txt'))
-O, M = tuple(min(c[i]-1 for c in data) for i in range(3)),tuple(max(c[i]+2 for c in data) for i in range(3))
+O, M = tuple(min(c[i]-1 for c in data) for i in range(3)), tuple(max(c[i]+2 for c in data) for i in range(3))
 
 def is_valid(p): return all(O[k] <= p[k] <= M[k] for k in range(3))
 def get_around(p): return set(c for c in [tuple(p[k] + d * (k==i) for k in range(3)) for i in range(3) for d in [-1, 1]] if is_valid(c))
