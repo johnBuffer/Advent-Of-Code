@@ -1,7 +1,6 @@
 data = open('data.txt').read().split('\n')
-world = data[:-2]
-moves = [int(x) for l in data[-1].split('R') for x in l.split('L')]
-dirs  = [c for c in data[-1] if c in ['R', 'L']] + [' ']
+moves, world = [int(x) for l in data[-1].split('R') for x in l.split('L')], data[:-2]
+dirs  = [' '] + [c for c in data[-1] if c in ['R', 'L']]
 
 # Very not generic
 connections = [
@@ -43,12 +42,9 @@ def walk(p, v, dist):
         else: break
     return p, v
 
-def follow():
-    p, v = get_start()
-    for n, r in zip(moves, dirs):
-        p, v = walk(p, v, n)
-        v = rotate(v, r)
+def follow(p, v):
+    for n, r in zip(moves, dirs): p, v = walk(p, rotate(v, r), n)
     return 1000 * (p[1] + 1) + 4 * (p[0] + 1) + [(1, 0), (0, 1), (-1, 0), (0, -1)].index(v)
 
 # osef part 1
-print(follow())
+print(follow(*get_start()))
