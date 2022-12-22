@@ -21,8 +21,9 @@ connections = [
     (range(  0,  50), range( 99, 100), ( 0, -1), lambda x, y: (50, 50 + x)        , ( 1,  0)), # 13
 ]
 
+def get_start(): return (world[0].find('.'), 0), (1, 0)
+def rotate(v, r): return (-v[1], v[0]) if r == 'R' else (v[1], -v[0]) if r == 'L' else v
 def adv(p, v): return (p[0] + v[0], p[1] + v[1])
-
 def need_wrap(x, y): return any(x in rx and y in ry for rx, ry, _, _, _ in connections)
 
 def wrap_cube(x, y, v):
@@ -42,19 +43,8 @@ def walk(p, v, dist):
         else: break
     return p, v
 
-def get_start():
-    return (world[0].find('.'), 0)
-
-def rotate(v, d):
-    if d == 'R':
-        return (-v[1], v[0])
-    elif d == 'L':
-        return (v[1], -v[0])
-    return v
-
 def follow():
-    p = get_start()
-    v = (1, 0)
+    p, v = get_start()
     for n, r in zip(moves, dirs):
         p, v = walk(p, v, n)
         v = rotate(v, r)
