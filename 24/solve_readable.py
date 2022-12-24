@@ -34,9 +34,8 @@ def find_path(start, target, world):
         time += 1
     return time, world
 
-
-print(find_path((1, 0), (X-2, Y-1), data)[0])
 time1, world = find_path((1, 0), (X-2, Y-1), data)
+print(time1)
 time2, world = find_path((X-2, Y-1), (1, 0), world)
 time3, world = find_path((1, 0), (X-2, Y-1), world)
 print(time1 + time2 + time3)
