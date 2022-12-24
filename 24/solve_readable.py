@@ -11,10 +11,10 @@ def update_blizzard(x, y, c):
 def update(world):
     return [update_blizzard(*b) for b in world]
 
-def valid(x, y, w): 
-    in_world = (-1<x<X) and (-1<y<Y)
+def valid(x, y, world): 
+    in_world = (-1 < x < X) and (-1 < y < Y)
     no_wall  = (x, y) not in wall
-    no_bliz  = not any((bx, by) == (x, y) for bx, by, _ in w)
+    no_bliz  = not any((bx, by) == (x, y) for bx, by, _ in world)
     return in_world and no_wall and no_bliz
 
 def find_path(start, target, world):
