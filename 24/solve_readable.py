@@ -25,9 +25,10 @@ def find_path(start, target, world):
         # for all currently valid positions
         for x, y in pos:
             for nx, ny in [(x, y), (x-1, y), (x+1, y), (x, y-1), (x, y+1)]:
-                # list all surroundings that will be valid after bliz update
-                if valid(nx, ny, world):
-                    next_pos.add((nx, ny))
+                if (nx, ny) not in next_pos:
+                    # list all surroundings that will be valid after bliz update
+                    if valid(nx, ny, world):
+                        next_pos.add((nx, ny))
         # update current valid positions
         pos = next_pos
         time += 1
@@ -35,7 +36,6 @@ def find_path(start, target, world):
 
 
 print(find_path((1, 0), (X-2, Y-1), data)[0])
-
 time1, world = find_path((1, 0), (X-2, Y-1), data)
 time2, world = find_path((X-2, Y-1), (1, 0), world)
 time3, world = find_path((1, 0), (X-2, Y-1), world)
