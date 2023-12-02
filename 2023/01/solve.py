@@ -4,7 +4,7 @@ num_alpha = [('one', 1), ('two', 2), ('three', 3), ('four', 4), ('five', 5), ('s
 
 def get_matches(s, token):
     # index + rindex
-    return sorted([idx for n, x in token if n in s for idx in [(s.index(n), x), (s.rindex(n), x)]])
+    return sorted([(s.index(n), x) for n, x in token if n in s] + [(s.rindex(n), x) for n, x in token if n in s], key=lambda x: x[0])
 
 def get_calib(matches):
     return matches[0][1] * 10 + matches[-1][1]
