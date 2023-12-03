@@ -6,7 +6,7 @@ def get_symbol(x, y):
 
 cs, n, symbols = None, 0, defaultdict(list)
 for c in [(a, b) for b in range(140) for a in range(141)]:
-    num = data[c] in '0123456789'
+    num = data[c].isdigit()
     if cs and not num: symbols[cs[0]] += [n]
     cs = get_symbol(*c) or cs if num else None
     n = 10 * n + int(data[c]) if num else 0
