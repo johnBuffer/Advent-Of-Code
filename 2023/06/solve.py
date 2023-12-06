@@ -1,4 +1,4 @@
-data = [[int(x) for x in l.strip().split(' ') if x and x.isdigit()] for l in open('data.txt')]
+data = [[int(x) for x in l.strip().split(' ') if x.isdigit()] for l in open('data.txt')]
 
 def get_count(t, d):
     return sum(v * (t-v) > d for v in range(t))
