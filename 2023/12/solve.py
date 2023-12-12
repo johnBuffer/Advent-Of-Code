@@ -21,7 +21,7 @@ def solve(line, valid, histo, count=0, last=''):
                     else: # Walking a '.' section
                         histo[key] = solve(r, valid, histo, count, h)
                 elif h == '?':
-                    return solve('.' + r, valid, histo, count, last) + solve('#' + r, valid, histo, count, last)
+                    histo[key] = solve('.' + r, valid, histo, count, last) + solve('#' + r, valid, histo, count, last)
             else:
                 histo[key] = count + ('#' not in line)
     return histo[key]
