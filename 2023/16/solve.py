@@ -22,7 +22,6 @@ def energize(s, d):
     return len(set((x, y) for x, y, _, _ in visited))
 
 print(energize((0, 0), (1, 0)))
-
 X, Y = len(data[0]), len(data)
 starts  = [((x, y), (0, vy)) for x in range(X) for y, vy in [(0, 1), (Y-1, -1)]]
 starts += [((x, y), (vx, 0)) for y in range(Y) for x, vx in [(0, 1), (X-1, -1)]]
