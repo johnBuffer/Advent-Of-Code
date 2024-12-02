@@ -7,7 +7,7 @@ def is_valid(l):
     return (check(l, lambda a, b: b+4 > a > b) or check(l, lambda a, b: a+4 > b > a))
 
 def remove_1(l):
-    return [l[:i] + l[i+1:] for i in range(len(l))]
+    return [l[:i] + l[i+1:] for i in range(len(l))] + [l]
 
 print(sum(is_valid(l) for l in data))
-print(sum(any(is_valid(x) for x in remove_1(l)) or is_valid(l) for l in data))
+print(sum(any(is_valid(x) for x in remove_1(l)) for l in data))
