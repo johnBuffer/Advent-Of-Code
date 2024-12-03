@@ -1,6 +1,6 @@
 import re
 
-s = ''.join(open('data.txt'))
+s = open('data.txt').read()
 data = [([int(x) for x in m.groups()], m.span(0)) for m in re.finditer(r"mul\((\d+),(\d+)\)", s)]
 
 def get_state(p):
