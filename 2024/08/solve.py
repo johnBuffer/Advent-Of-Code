@@ -12,13 +12,10 @@ def is_antinode_2(x, y, s):
     for (a, b), c in s.items():
         if (a, b) == (x, y):
             return 1
-        vx, vy = get_normalized(a - x, b - y)
+        vx, vy = get_normalized(a-x, b-y)
         if any(s.get((a+i*vx, b+i*vy)) == c for i in range(1, 50)):
             return 1
     return 0
-
-def is_antinode_3(x, y, s):
-    return any((a, b) == (x, y) or for (a, b), c in s.items())
 
 print(sum(is_antinode(x, y, {p: c for p, c in data.items() if c != '.'}) for x, y in data))
 print(sum(is_antinode_2(x, y, {p: c for p, c in data.items() if c != '.'}) for x, y in data))
