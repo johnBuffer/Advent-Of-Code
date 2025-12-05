@@ -2,8 +2,7 @@ p1, p2 = open('input.txt').read().split('\n\n')
 ranges = sorted([[int(s) for s in r.split('-')] for r in p1.split('\n')], key=lambda x: x[0])
 ids = [int(i) for i in p2.split('\n')]
 
-merged = [ranges[0]]
-last = ranges[0][1]
+merged, last = [ranges[0]], ranges[0][1]
 for i in range(1, len(ranges)):
     a, b = ranges[i]
     if a <= last and b > last:
